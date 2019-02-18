@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="index :: head">
+</head>
+<body>
+
+  <header th:fragment="script">
+    <script th:fragment="jquery" th:src="@{../../../js/jquery-3.3.1.min.js}" ></script>
+    <script th:fragment="script" type="text/javascript" th:src="@{../../../js/script-for-index.js}" ></script>
+  </header>
+
+  <nav th:replace="index::navbar">
+  </nav>
+
+<div class="div_groups">
+  <h1 th:text="'Add student to ' + ${groupName}">Add student</h1>
+  <div class="div_form">
+    <form id="mes" class="edit" method="post">
+      <label>Name</label>
+      <input  th:name="name" type="text"  placeholder="enter name" required>
+      <div class="er_message"  th:if="${nameMessage}" th:text="${nameMessage}"></div>
+      <br>
+      <label>Surname</label>
+      <input  th:name="surname" type="text"  placeholder="enter surname" required>
+      <div class="er_message" th:if="${surMessage}" th:text="${surMessage}"></div>
+      <br>
+      <label>Email</label>
+      <input  th:name="email" type="text"  placeholder="enter email" required>
+      <div class="er_message" th:if="${emailMessage}" th:text="${emailMessage}"></div>
+      <br>
+      <input type="submit" value="save">
+
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

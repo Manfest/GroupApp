@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="index::head">
+</head>
+<body>
+
+  <header th:fragment="script">
+    <script th:fragment="jquery" th:src="@{../../js/jquery-3.3.1.min.js}" ></script>
+    <script th:fragment="script" type="text/javascript" th:src="@{../../js/script-for-index.js}" ></script>
+  </header>
+  <nav th:replace="index::navbar">
+  </nav>
+
+<div class="div_groups">
+  <h1>Edit group</h1>
+  <div class="div_form">
+    <form  class="edit" method="post">
+      <label>Name</label>
+      <input  th:name="newNameOfGroup" type="text"  th:attr="value=${group.name}" required>
+      <div class="er_message"  th:if="${nameMessage}" th:text="${nameMessage}"></div>
+      <br>
+      <input type="submit" value="save">
+
+
+    </form>
+
+  </div>
+
+</div>
+
+</body>
+</html>

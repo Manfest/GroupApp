@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="index::head">
+</head>
+<body>
+
+  <header th:replace="index::script">
+  </header>
+
+<nav th:replace="index::navbar">
+</nav>
+
+
+<div class="div_groups">
+  <h1 style="display: inline-block;">All students</h1>
+  <form class="search_form" method="get" th:action="@{/students/search}">
+    <span class="fa fa-search"></span>
+    <input  type="text" th:name="searchName" placeholder="Search for student.." required>
+  </form>
+  <div >
+    <table class="stud_wrapper">
+      <tr>
+        <th>Name<a th:href="@{/students/sort}"><i class="fas fa-sort"></i></a></th>
+        <th>surname</th>
+        <th>email</th>
+        <th>edit</th>
+        <th>delete</th>
+      </tr>
+      <tr th:if="${#lists.isEmpty(students)}">
+        <td colspan="5" style="text-align:center; font-size: 27px;">no groups</td>
+      </tr>
+      <tr th:each="student:${students}" >
+        <td ><a  class="student popup" ><p th:text="${student.name}"></p>
+            <div  class="popuptext">
+              <ul class="non" th:each="group:${student.groups}">
+               <li th:text="${group.name}">none</li>
+              </ul>
+            </div>
+           </a>
+        </td>
+        <td><a th:text="${student.surname}" class="student"></a></td>
+
+        <td><a th:text="${student.email}" class="student"></a></td>
+        <td class="tab_td">
+              <a class="tab_link" th:href="@{'/students/{id}/edit'(id=${student.id})}">
+                <i class="far fa-edit"></i></a></td>
+        <td class="tab_td">
+              <a class="tab_link" th:href="@{'/students/{id}'(id=${student.id})}">
+                <i class="far fa-trash-alt"></i></a></td>
+
+      </tr>
+
+    </table>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

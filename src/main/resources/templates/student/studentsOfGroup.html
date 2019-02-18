@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="index::head">
+</head>
+<body>
+
+  <header th:fragment="script">
+    <script th:fragment="jquery" th:src="@{../../js/jquery-3.3.1.min.js}" ></script>
+    <script th:fragment="script" type="text/javascript" th:src="@{../../js/script-for-index.js}" ></script>
+  </header>
+
+  <nav th:replace="index::navbar">
+  </nav>
+
+  <div class="div_groups">
+    <h1 th:text="${groupName}  + ' students'">All students</h1>
+    <div class="info_message"  th:if="${infoMessage}" th:text="${infoMessage}">Student was added</div>
+
+
+    <div >
+      <table class="stud_wrapper">
+        <tr>
+          <th>Name<a th:href="@{'/groups/{name}/students/sort'(name=${groupName})}"><i class="fas fa-sort"></i></a></th>
+          <th>surname</th>
+          <th>email</th>
+          <th style=" min-width: 100px; width: 130px; ">added</th>
+          <th>edit</th>
+          <th>delete</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(students)}">
+          <td colspan="6" style="text-align:center; font-size: 27px;">no students yet</td>
+        </tr>
+        <tr th:each="student:${students}">
+          <td><a th:text="${student.name}" class="student"></a></td>
+          <td><a th:text="${student.surname}" class="student"></a></td>
+          <td><a th:text="${student.email}" class="student"></a></td>
+          <td style="text-align: center;"><a style="float: none;" th:text="${#dates.format(student.date, 'dd/MM/yyyy')}" class="student"></a></td>
+          <td class="tab_td">
+            <a class="tab_link"
+               th:href="@{'/groups/{name}/students/{id}/edit'(name=${groupName}, id=${student.id.toString()})}">
+              <i class="far fa-edit"></i></a></td>
+          <td class="tab_td">
+            <a class="tab_link"
+               th:href="@{'/groups/{name}/students/{id}/delete'(name=${groupName}, id=${student.id.toString()})}">
+              <i class="far fa-trash-alt"></i></a></td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="add_form">
+    <a class="button_form" th:href="@{'/groups/{name}/students/add'(name=${groupName})}">
+      Add new student
+    </a>
+  </div>
+
+
+</body>
+</html>

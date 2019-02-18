@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+  <script th:src="@{js/jquery-3.3.1.min.js}"></script>
+  <script type="text/javascript" th:src="@{js/script-for-index.js}"></script>
+
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+  <title th:text="${title}"></title>
+</head>
+<body>
+
+<div  id="backgrnd">
+  <div class="sign_box">
+    <form class="sign_form" th:method="post">
+      <label >Email</label>
+      <input type="text" placeholder="enter email.." th:name="email" required>
+      <p class="er_message login_email" th:if="${emailMessage}" th:text="${emailMessage}">error</p>
+
+      <label >Password</label>
+      <input type="password" placeholder="enter password.." th:name="password" required>
+      <p class="er_message login_pass" th:if="${passwordMessage}" th:text="${passwordMessage}">wrong</p>
+
+      <input  type="submit" value="Log in"/>
+
+    </form>
+
+  </div>
+</div>
+
+
+</body>
+</html>

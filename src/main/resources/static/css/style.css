@@ -1,0 +1,586 @@
+html{
+  font-family: fa5-proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+body{
+  margin: 0;
+}
+.tab_wrapper{
+  table-layout: auto;
+  border-collapse: collapse;
+  overflow: hidden;
+  min-width: 500px;
+  margin: 0;
+  border-radius: 7px;
+  width: 80%;
+  box-shadow: 3px 3px 20px grey;
+}
+
+.stud_wrapper{
+  table-layout: auto;
+  border-collapse: collapse;
+  min-width: 590px;
+  margin: 0;
+  border-radius: 7px;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: 3px 3px 20px grey;
+
+
+}
+
+
+td{
+  border: 1px solid #ddd;
+  padding: 10px;
+
+}
+th{
+  padding: 15px 10px ;
+  text-align: center;
+  color:white;
+  background-color: #1F2936;
+}
+
+
+
+.tab tr:hover {
+  background-color: #ddd;
+}
+
+.tab_wrapper tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+.stud_wrapper tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+
+
+.group{
+  float: left;
+  padding: 10px;
+  font-size:25px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.tab_td{
+  width: 100px;
+  text-align: center;
+
+}
+.tab_link{
+
+  padding: 10px;
+  margin: auto;
+  font-size: 17px;
+  text-decoration: none;
+  color: black;
+}
+
+.tab_link:hover{
+  font-size: 19px;
+
+
+}
+.group:hover{
+  color: #1F2936;
+
+}
+
+.div_groups{
+  padding: 100px 200px 50px 200px;
+}
+
+.menu_link{
+
+  border-right: 1px solid #ddd;
+  font-size: 1.5em;
+  text-align: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  line-height: 50px;
+
+
+
+}
+.menu_link:hover{
+  color: #A9A9A9;
+
+
+}
+
+
+
+.navig{
+  padding: 20px 30px;
+  background-color: #1F2936;
+}
+
+h1{
+  padding:20px;
+  margin:0;
+
+  display: inline-block
+}
+
+
+/* form page */
+
+.div_form{
+  padding: 20px;
+
+}
+
+.edit input[type=text]{
+  padding: 12px 12px 2px 12px;
+  font-size: 20px;
+  width: 150px;
+  border: none;
+  text-align: center;
+  border-bottom: 2px solid  #ccc ;
+
+  transition: width .5s;
+
+}
+.edit input[type=text]:focus{
+  border-bottom: 2px solid #1F2936;
+  width: 350px;
+  text-align: left;
+}
+
+input[type=submit]{
+  font-size: 20px;
+  margin: 15px 15px 15px 0;
+  padding: 12px;
+  background-color: #1F2936;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+
+}
+input[type=submit]:hover{
+  background-color: #2D3744;
+  box-shadow: 3px 3px 20px grey;
+  transition: all 0.2s ease 0s;
+}
+
+label{
+  display: inline-block;
+  padding: 15px 15px 15px 0;
+  font-size: 22px;
+}
+
+
+.search_form input{
+  background-color: white;
+  font-size: 0.9em;
+  border: 2px solid #A9A9A9;
+  padding: 10px 10px 5px 30px;
+  border-radius: 7px;
+  text-align: left;
+  width: 150px;
+  transition: width .5s;
+
+
+}
+
+.search_form input:focus{
+  width: 250px;
+}
+.search_form{
+  display: inline-block;
+  padding: 20px;
+  float: right;
+
+}
+
+.fa-search {
+  color: #A9A9A9;
+  padding: 10px;
+  position: relative;
+  left: 40px;
+
+
+}
+
+/* button add new group */
+
+.button_form{
+  font-size: 20px;
+
+  padding: 12px;
+  background-color: #1F2936;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  margin: 0;
+  text-decoration: none;
+  display: inline-block;
+
+
+}
+
+.button_form:hover{
+  background-color: #2D3744;
+  -webkit-box-shadow: 3px 3px 20px grey;
+  transition: all 0.2s ease 0s;
+}
+
+
+
+.add_form{
+  padding: 0 200px 50px 200px;
+
+}
+
+
+
+.fa-sort{
+  padding-left: 5px;
+  color: #A9A9A9;
+}
+
+/*student table*/
+
+.student{
+  float: left;
+  padding: 5px;
+  font-size:20px;
+
+  text-decoration: none;
+  color: black;
+}
+
+
+
+
+/* popup */
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.popup p{
+  margin: 0;
+}
+
+.popup:hover .popuptext{
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* The actual popup */
+.popuptext {
+  visibility: hidden;
+  font-size: 19px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 7px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: -5px;
+  left: 170px;
+  margin-left: -80px;
+}
+
+.non{
+  padding: 0 10px;
+  margin: 0;
+}
+.non li{
+  list-style-type: none;
+}
+
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  right: 100%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color:  transparent #555 transparent transparent;
+}
+
+
+
+@-webkit-keyframes slide {
+  from {top: -300px; opacity: 0}
+  to {top: 70px; opacity: 1}
+}
+
+@keyframes slide {
+  from {top: -300px; opacity: 0}
+  to {top: 70px; opacity: 1}
+}
+
+@-webkit-keyframes fade {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+
+
+/* */
+
+.sign_box{
+  position: absolute;
+  line-height: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border: 3px solid #f1f1f1;
+  background-color: white;
+  box-shadow: 3px 3px 20px grey;
+  -webkit-animation-name: slideLog;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideLog;
+  animation-duration: 0.4s;
+}
+
+.sign_form{
+  width: 300px;
+  padding: 15px;
+  background-color: white;
+
+
+}
+
+.sign_form input[type=text], .sign_form input[type=password]  {
+
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background-color: #f1f1f1;
+
+}
+
+
+
+.sign_form input[type=text]:focus, .sign_form input[type=password]:focus{
+  background-color: #ddd;
+  outline: none;
+}
+
+.sign_form input[type=submit]{
+  width: 100%;
+
+}
+
+
+
+#backgrnd{
+
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.2);
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 0.4s;
+  animation-name: fade;
+  animation-duration: 0.4s
+}
+
+
+@-webkit-keyframes slideLog {
+  from {top:0; opacity: 0}
+  to { opacity: 1}
+}
+@keyframes slideLog {
+  from {top:0; opacity: 0}
+  to { opacity: 1}
+}
+
+
+.info_message{
+  float: right;
+  display: inline-block;
+  padding:5px;
+  text-align: center;
+  font-size: 25px;
+  font-style: italic;
+  color: limegreen;
+  position: fixed;
+  top: 140px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+
+.er_message{
+  display: inline-block;
+  padding: 15px;
+  font-size: 0.9em;
+  font-style: italic;
+  color: maroon;
+}
+
+.menu_login{
+
+  text-align: center;
+  color: #A9A9A9;
+  padding: 15px;
+  border: 1px solid #A9A9A9;
+  border-radius: 7px;
+  display: inline-block;
+  float: right;
+  margin-right: 20px;
+  min-width: 100px;
+
+}
+
+.menu_user{
+  color: #A9A9A9;
+  padding-right: 5px;
+}
+
+
+.menu_user:hover{
+  color: white;
+}
+
+
+
+.menu_login p{
+  margin: 0;
+  display: inline-block;
+}
+
+
+.menu_login:hover .dropdown{
+  display: inline-block;
+  padding: 0 0 0 10px;
+}
+
+.drop{
+  color: #A9A9A9;
+  display: block;
+  float: right;
+
+
+}
+
+.dropdown{
+  border-left: 1px solid #A9A9A9;
+  display: none;
+  position: relative;
+  color: #A9A9A9;
+  padding: 15px;
+  text-align: center;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.dropdown:hover{
+  color: white;
+}
+
+.login_email {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 230px;
+
+}
+
+.login_pass{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 85px;
+
+}
+
+.user tr:nth-child(even) {
+  border-bottom: 2px solid #ddd;
+  border-top: 2px solid #ddd;
+}
+
+.user {
+  border-collapse: collapse;
+  min-width: 500px;
+}
+
+.user td{
+  padding: 10px 10px 10px 15px;
+  border: 0;
+  min-height: 40px;
+}
+
+.div_user{
+  padding: 100px 250px 50px 250px;
+}
+
+
+
+.editUser input[type=text],.editUser input[type=password]{
+  padding: 12px 0 2px 0;
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  border-bottom: 2px solid white;
+
+
+}
+.editUser input[type=text]:focus {
+  border-bottom: 2px solid  #1F2936;
+
+}
+
+
+.editUser input[type=text]:hover,.editUser input[type=password]:hover{
+  border-bottom: 2px solid   #1F2936;
+}
+
+
+.inputUser{
+  height: 80px;
+  width: 300px;
+}
+
+.user .er_message{
+  position: absolute;
+  padding: 5px;
+  font-size: 0.8em;
+  min-width: 100px;
+  display: block;
+}
+
+
+#save{
+  display: none;
+  padding: 50px 200px 50px 0;
+
+}

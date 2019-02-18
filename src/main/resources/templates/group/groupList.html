@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="index::head">
+</head>
+<body>
+  <header th:replace="index::script">
+  </header>
+  <nav th:replace="index::navbar">
+  </nav>
+
+  <div class="div_groups">
+    <h1>Groups</h1>
+    <div class="info_message" th:if="${infoMessage}" th:text="${infoMessage}">Group was added</div>
+
+    <div >
+      <table class="tab_wrapper">
+        <tr>
+          <th>Name<a th:href="@{/groups/sort}"><i class="fas fa-sort"></i></a></th>
+          <th>edit</th>
+          <th>delete</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(groups)}">
+          <td colspan="3">no groups yet</td>
+        </tr>
+        <tr  th:each="group:${groups}">
+          <td ><a th:href="@{'/groups/{name}/students' (name=${group.name})}" th:text="${group.name}" class="group"></a></td>
+          <td class="tab_td"><a th:href="@{'/groups/{name}/edit'(name=${group.name})}" class="tab_link"><i class="far fa-edit"></i></a></td>
+          <td class="tab_td"><a th:href="@{'/groups/{id}'(id=${group.id})}" class="tab_link"><i class="far fa-trash-alt"></i></a></td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+  <div class="add_form">
+    <a class="button_form" th:href="@{/groups/add}">
+      Add new group
+    </a>
+  </div>
+
+</body>
+</html>

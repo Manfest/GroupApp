@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="index::head">
+</head>
+<body>
+<header th:replace="index::script">
+</header>
+<nav th:replace="index::navbar">
+</nav>
+
+<div class="div_groups">
+  <h1>User information</h1>
+
+  <div class="info_message" th:if="${infoMessage}" th:text="${infoMessage}"></div>
+  <form id="inpt" class="editUser" method="post">
+    <table class="user">
+
+      <tr>
+        <td class="inputUser">
+          <input type="text" th:name="name" th:value= "${name}"  style="font-size: 25px;"
+                 onclick="showButton()" required>
+          <div  class="er_message"  th:text="${nameMessage}">message</div>
+
+        </td>
+        <td class="inputUser">
+          <input type="text" th:name="surname" th:value= "${surname}" style="font-size: 25px;"
+                 onclick="showButton()">
+          <div class="er_message"  th:text="${surMessage}">message</div>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td><p class="student">email: </p></td>
+        <td>
+          <input type="text" th:name="email" th:value= "${email}" onclick="showButton()" required>
+          <div  class="er_message"  th:text="${emailMessage}">message</div>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td><p class="student">password: </p></td>
+        <td>
+          <input type="password" th:name="password" th:value= "${password}" onclick="showButton()" required>
+          <div  class="er_message"  th:text="${passwordMessage}">message</div>
+        </td>
+
+      </tr>
+    </table>
+
+    <div id ="save">
+      <input  class="button_form" type="submit" value="save changes"/>
+    </div>
+  </form>
+
+
+</div>
+
+
+<script>
+
+  function showButton(){
+    var but = document.getElementById("save");
+    but.style.display = "block";
+  };
+
+
+</script>
+
+
+
+</body>
+</html>
