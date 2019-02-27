@@ -4,7 +4,7 @@
   });
   setTimeout(function() {
     $('.info_message').fadeOut();
-  }, 4000);
+  }, 5000);
 
   $('.er_message').click(function() {
     $(this).fadeOut();

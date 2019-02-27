@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="index :: head">
+</head>
+<body>
+
+<header th:fragment="script">
+  <script th:fragment="jquery" th:src="@{../../../../js/jquery-3.3.1.min.js}" ></script>
+  <script th:fragment="script" type="text/javascript" th:src="@{../../../../js/script-for-index.js}" ></script>
+</header>
+
+<nav th:replace="index::navbar">
+</nav>
+
+<div class="div_user">
+  <h1 th:text="'Send email to ' + ${studentName}"></h1>
+
+  <form  class="email_form" method="post">
+    <label>Subject</label><br>
+    <input type="text"
+          th:value="'Message from ' + ${userName}"
+          th:name="subject"
+           size="35"
+          title="you can change subject"
+          onclick="showButton()">
+    <br>
+    <label>Text</label>
+    <br>
+    <textarea rows="8" cols="70" th:name="emailText" placeholder="enter your message.."
+              onclick="showButton()" required></textarea>
+    <div   class="er_message"  th:text="${emailMessage}">message</div>
+    <div id="div_send">
+      <input id="send" type="submit" value="Send"/>
+    </div>
+
+  </form>
+
+</div>
+
+
+
+<script>
+
+  function showButton(){
+    var but = document.getElementById("send");
+    but.style.display = "block";
+  };
+
+
+</script>
+
+</body>
+</html>

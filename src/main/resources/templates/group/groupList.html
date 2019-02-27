@@ -23,7 +23,8 @@
           <td colspan="3">no groups yet</td>
         </tr>
         <tr  th:each="group:${groups}">
-          <td ><a th:href="@{'/groups/{name}/students' (name=${group.name})}" th:text="${group.name}" class="group"></a></td>
+          <td ><a th:href="@{'/groups/{name}/students' (name=${group.name})}"
+                  th:text="${group.name}" class="group" title="view students"></a></td>
           <td class="tab_td"><a th:href="@{'/groups/{name}/edit'(name=${group.name})}" class="tab_link"><i class="far fa-edit"></i></a></td>
           <td class="tab_td"><a th:href="@{'/groups/{id}'(id=${group.id})}" class="tab_link"><i class="far fa-trash-alt"></i></a></td>
         </tr>

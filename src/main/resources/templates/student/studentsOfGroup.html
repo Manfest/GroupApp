@@ -33,7 +33,11 @@
         <tr th:each="student:${students}">
           <td><a th:text="${student.name}" class="student"></a></td>
           <td><a th:text="${student.surname}" class="student"></a></td>
-          <td><a th:text="${student.email}" class="student"></a></td>
+          <td><a class="student stud_email"
+                 title="click to send email"
+                 th:text="${student.email}"
+                 th:href="@{'/groups/{name}/students/{id}/send_email'(name=${groupName}, id=${student.id})}">
+          </a></td>
           <td style="text-align: center;"><a style="float: none;" th:text="${#dates.format(student.date, 'dd/MM/yyyy')}" class="student"></a></td>
           <td class="tab_td">
             <a class="tab_link"

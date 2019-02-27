@@ -82,11 +82,11 @@ th{
 
 .tab_link:hover{
   font-size: 19px;
-
-
+  cursor: pointer;
 }
+
 .group:hover{
-  color: #1F2936;
+  color: #888888;
 
 }
 
@@ -110,11 +110,7 @@ th{
 }
 .menu_link:hover{
   color: #A9A9A9;
-
-
 }
-
-
 
 .navig{
   padding: 20px 30px;
@@ -167,7 +163,7 @@ input[type=submit]{
 input[type=submit]:hover{
   background-color: #2D3744;
   box-shadow: 3px 3px 20px grey;
-  transition: all 0.2s ease 0s;
+  transition: all 0.1s ;
 }
 
 label{
@@ -179,7 +175,7 @@ label{
 
 .search_form input{
   background-color: white;
-  font-size: 0.9em;
+  font-size: 17px;
   border: 2px solid #A9A9A9;
   padding: 10px 10px 5px 30px;
   border-radius: 7px;
@@ -213,7 +209,6 @@ label{
 
 .button_form{
   font-size: 20px;
-
   padding: 12px;
   background-color: #1F2936;
   color: white;
@@ -223,24 +218,18 @@ label{
   margin: 0;
   text-decoration: none;
   display: inline-block;
-
-
 }
 
 .button_form:hover{
   background-color: #2D3744;
   -webkit-box-shadow: 3px 3px 20px grey;
-  transition: all 0.2s ease 0s;
+  transition: all 0.1s ;
 }
-
-
 
 .add_form{
   padding: 0 200px 50px 200px;
 
 }
-
-
 
 .fa-sort{
   padding-left: 5px;
@@ -257,8 +246,6 @@ label{
   text-decoration: none;
   color: black;
 }
-
-
 
 
 /* popup */
@@ -281,6 +268,10 @@ label{
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
+}
+
+.popup:hover{
+  color: #888888;
 }
 
 /* The actual popup */
@@ -320,8 +311,6 @@ label{
   border-color:  transparent #555 transparent transparent;
 }
 
-
-
 @-webkit-keyframes slide {
   from {top: -300px; opacity: 0}
   to {top: 70px; opacity: 1}
@@ -357,9 +346,9 @@ label{
   background-color: white;
   box-shadow: 3px 3px 20px grey;
   -webkit-animation-name: slideLog;
-  -webkit-animation-duration: 0.4s;
+  -webkit-animation-duration: 1s;
   animation-name: slideLog;
-  animation-duration: 0.4s;
+  animation-duration: 1s;
 }
 
 .sign_form{
@@ -391,10 +380,8 @@ label{
 
 .sign_form input[type=submit]{
   width: 100%;
-
+  margin: 20px 15px 0 0;
 }
-
-
 
 #backgrnd{
 
@@ -424,7 +411,7 @@ label{
 
 
 .info_message{
-  float: right;
+
   display: inline-block;
   padding:5px;
   text-align: center;
@@ -465,12 +452,9 @@ label{
   padding-right: 5px;
 }
 
-
 .menu_user:hover{
   color: white;
 }
-
-
 
 .menu_login p{
   margin: 0;
@@ -487,8 +471,6 @@ label{
   color: #A9A9A9;
   display: block;
   float: right;
-
-
 }
 
 .dropdown{
@@ -510,7 +492,7 @@ label{
   margin: 0;
   padding: 0;
   position: absolute;
-  bottom: 230px;
+  bottom: 270px;
 
 }
 
@@ -518,7 +500,7 @@ label{
   margin: 0;
   padding: 0;
   position: absolute;
-  bottom: 85px;
+  bottom: 125px;
 
 }
 
@@ -583,4 +565,132 @@ label{
   display: none;
   padding: 50px 200px 50px 0;
 
+}
+
+.pas_forgot{
+  padding: 10px;
+  text-align: center;
+
+}
+
+.pas_forgot a{
+  font-size: 0.9em;
+  color: #1F2936;
+  text-decoration: none;
+}
+
+.pas_forgot a:hover{
+  text-decoration: underline;
+
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: -25px;
+  color: #A9A9A9;
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.close:hover{
+  cursor: pointer;
+  color: #1F2936;
+}
+
+.box_forgot{
+
+
+  position: absolute;
+  line-height: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border: 3px solid #f1f1f1;
+  background-color: white;
+  box-shadow: 3px 3px 20px grey;
+
+}
+
+.form_forget .login_email {
+  bottom: 70px;
+
+}
+
+.reminder{
+
+  display: inline-block;
+  padding:5px;
+  text-align: center;
+  font-size: 25px;
+  font-style: italic;
+  color: limegreen;
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+
+@-webkit-keyframes fadeInForgot {
+  from {opacity: 0 }
+  to { opacity: 1}
+}
+
+@keyframes fadeInForgot {
+  from {opacity: 0}
+  to { opacity: 1}
+}
+
+
+@-webkit-keyframes fadeOutForgot {
+  from {opacity: 1 }
+  to { opacity: 0}
+}
+
+@keyframes fadeOutForgot {
+  from {opacity: 1}
+  to { opacity: 0}
+}
+
+/*send email page*/
+
+
+.email_form input[type=text], textarea{
+
+  border: 2px solid #A9A9A9;
+  padding: 10px 10px 10px 10px;
+  border-radius: 7px;
+  text-align: left;
+  font-size: 17px;
+  font-family: sans-serif;
+}
+
+.email_form{
+  padding: 0 20px 20px 20px;
+
+}
+
+.email_form input[type=submit]{
+  display: none;
+}
+
+
+.stud_email:hover{
+  color: #888888;
+  cursor: pointer;
+
+}
+
+.email_form .er_message{
+  position: absolute;
+  padding: 5px;
+  font-size: 0.9em;
+  min-width: 100px;
+  display: block;
+}
+
+#div_send{
+  padding: 20px 0 0 0;
 }

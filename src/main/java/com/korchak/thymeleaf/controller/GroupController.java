@@ -22,10 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 //@RequestMapping(value = "/groups")
 public class GroupController {
 
+  private static CurrentUserService currentUserService;
   private GroupService groupService;
   private StudentService studentService;
-  private CurrentUserService currentUserService;
-
 
   private static String infoMessage = "";
   private static String nameMessage = "";
@@ -33,31 +32,39 @@ public class GroupController {
 
   @Autowired
 
-  public GroupController(GroupService groupService, StudentService studentService, CurrentUserService currentUserService) {
+  public GroupController(GroupService groupService, StudentService studentService,
+      CurrentUserService currentUserService) {
+
+    GroupController.currentUserService = currentUserService;
     this.groupService = groupService;
-    this.currentUserService = currentUserService;
     this.studentService = studentService;
   }
 
 
+  private static boolean isCurrentUser() {
+    if (currentUserService.getUser() != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
+  private static String getCurrentUserName() {
+    if ((currentUserService.getUser().getSurname() != null)) {
+      return ((currentUserService.getUser().getName().concat(" ")
+          .concat(currentUserService.getUser().getSurname())));
+    } else {
+      return (currentUserService.getUser().getName());
+    }
+  }
 
 
   @GetMapping(value = "/groups")
   public String getAll(Model model) {
-    if(currentUserService.getUser() == null){
+    if (!isCurrentUser()) {
       return "redirect:/";
     }
-
-    model.addAttribute("title", "groups");
-    model.addAttribute("infoMessage", infoMessage);
-    infoMessage = "";
-    if((currentUserService.getUser().getSurname() != null)) {
-      model.addAttribute("userName", (currentUserService.getUser().getName().concat(" ")
-          .concat(currentUserService.getUser().getSurname())));
-    } else {
-      model.addAttribute("userName", currentUserService.getUser().getName());
-    }
+    model.addAttribute("userName", getCurrentUserName());
     if (sort.equals("asc")) {
       model.addAttribute("groups", groupService.getAllGroupsAsc());
     } else {
@@ -78,18 +85,12 @@ public class GroupController {
 
   @GetMapping(value = "/groups/{groupName}/edit")
   public String getEdit(@PathVariable String groupName, Model model) {
-    if(currentUserService.getUser() == null){
+    if (!isCurrentUser()) {
       return "redirect:/";
     }
-    if((currentUserService.getUser().getSurname() != null)) {
-      model.addAttribute("userName", (currentUserService.getUser().getName().concat(" ")
-          .concat(currentUserService.getUser().getSurname())));
-    } else {
-      model.addAttribute("userName", currentUserService.getUser().getName());
-    }
-
+    model.addAttribute("userName", getCurrentUserName());
     model.addAttribute("nameMessage", nameMessage);
-    model.addAttribute("title", "edit");
+    model.addAttribute("title", "edit " + groupName + " group");
     model.addAttribute("group", groupService.getGroupByName(groupName));
     nameMessage = "";
     return "group/editGroupForm";
@@ -103,8 +104,8 @@ public class GroupController {
       Model model) {
 
     try {
-      if ((newNameOfGroup != null) && (newNameOfGroup.length() != 0)) {
-        if (newNameOfGroup.length() > 30) {
+      if ((!newNameOfGroup.equalsIgnoreCase("null")) && (newNameOfGroup.trim().length() != 0)) {
+        if (newNameOfGroup.trim().length() > 30) {
           nameMessage = "name should be less than 30 characters!";
           model.addAttribute("eMessage", nameMessage);
           return "redirect:/groups/{groupName}/edit";
@@ -126,45 +127,39 @@ public class GroupController {
   }
 
 
-//  ??????????????????/
+  //  ??????????????????/
   @GetMapping(value = "/groups/{groupId}")
   public String deleteGroup(@PathVariable Integer groupId) {
-    if(currentUserService.getUser() == null){
+    if (!isCurrentUser()) {
       return "redirect:/";
     }
     String groupName = groupService.getGroupById(groupId).getName();
 
-    for(Student s : groupService.getGroupById(groupId).getStudents()){
+    for (Student s : groupService.getGroupById(groupId).getStudents()) {
       studentService.deleteByid(s.getId());
     }
     groupService.deleteById(groupId);
-
     infoMessage = "group " + groupName + " was deleted";
     return "redirect:/groups";
   }
 
   @GetMapping(value = "/groups/add")
   public String getAddGroup(Model model) {
-    if(currentUserService.getUser() == null){
+    if (!isCurrentUser()) {
       return "redirect:/";
     }
-    if((currentUserService.getUser().getSurname() != null)) {
-      model.addAttribute("userName", (currentUserService.getUser().getName().concat(" ")
-          .concat(currentUserService.getUser().getSurname())));
-    } else {
-      model.addAttribute("userName", currentUserService.getUser().getName());
-    }
+    model.addAttribute("userName", getCurrentUserName());
+    model.addAttribute("title", "add new group");
     model.addAttribute("eMessage", nameMessage);
-    model.addAttribute("title", "add group");
     nameMessage = "";
     return "group/addGroup";
   }
 
   @PostMapping(value = "/groups/add")
-  public String addGroup(@RequestParam String newGroupName, Model model) {
+  public String addGroup(@RequestParam String newGroupName) {
 
-    if ((newGroupName != null) && (newGroupName.length() != 0)) {
-      if (newGroupName.length() > 30) {
+    if ((!newGroupName.equalsIgnoreCase("null")) && (newGroupName.trim().length() != 0)) {
+      if (newGroupName.trim().length() > 30) {
         nameMessage = "name should be less than 30 characters!";
         return "redirect:/groups/add";
       }
@@ -178,32 +173,6 @@ public class GroupController {
     return "redirect:/groups";
 
   }
-
-
-
-
-
-
-
-//  @PostMapping
-//  public List<Group> postOne(@RequestParam final Group group){
-//    return groupService.postGroup(group);
-//  }
-//
-//  @GetMapping(value = "/{groupName}")
-//  public Group getGroup(@PathVariable String groupName){
-//    return groupService.getGroupByName(groupName);
-//  }
-//
-//  @PutMapping(value = "/{groupName}")
-//  public List<Group> updateGroup(@RequestBody Group group){
-//    return groupService.updateByName(group);
-//  }
-//
-//  @DeleteMapping(value = "/{groupName}")
-//  public List<Group> deleteGroup(@PathVariable String groupName){
-//    return groupService.deleteGroupByName(groupName);
-//  }
 
 
 }

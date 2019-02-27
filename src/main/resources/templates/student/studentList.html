@@ -13,6 +13,7 @@
 
 <div class="div_groups">
   <h1 style="display: inline-block;">All students</h1>
+  <div class="info_message"  th:if="${infoMessage}" th:text="${infoMessage}">Student</div>
   <form class="search_form" method="get" th:action="@{/students/search}">
     <span class="fa fa-search"></span>
     <input  type="text" th:name="searchName" placeholder="Search for student.." required>
@@ -38,9 +39,11 @@
             </div>
            </a>
         </td>
-        <td><a th:text="${student.surname}" class="student"></a></td>
-
-        <td><a th:text="${student.email}" class="student"></a></td>
+        <td><a class="student" th:text="${student.surname}"></a></td>
+        <td><a class="student stud_email"
+               title="click to send email"
+               th:text="${student.email}"
+               th:href="@{'/students/{id}/send_email'(id=${student.id})}"></a></td>
         <td class="tab_td">
               <a class="tab_link" th:href="@{'/students/{id}/edit'(id=${student.id})}">
                 <i class="far fa-edit"></i></a></td>

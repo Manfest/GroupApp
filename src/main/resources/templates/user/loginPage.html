@@ -14,23 +14,44 @@
 </head>
 <body>
 
-<div  id="backgrnd">
-  <div class="sign_box">
-    <form class="sign_form" th:method="post">
-      <label >Email</label>
-      <input type="text" placeholder="enter email.." th:name="email" required>
-      <p class="er_message login_email" th:if="${emailMessage}" th:text="${emailMessage}">error</p>
+<div id="backgrnd">
 
-      <label >Password</label>
+  <div class="info_message reminder"  th:text="${infoMessage}">Password was sent to your email!</div>
+  <div class="sign_box" id="sign">
+    <form class="sign_form" th:method="post">
+      <label>Email</label>
+      <input type="text" placeholder="enter email.." th:name="email" required>
+      <p class="er_message login_email" th:if="${emailMessage}" th:text="${emailMessage}">wrong</p>
+
+      <label>Password</label>
       <input type="password" placeholder="enter password.." th:name="password" required>
       <p class="er_message login_pass" th:if="${passwordMessage}" th:text="${passwordMessage}">wrong</p>
-
-      <input  type="submit" value="Log in"/>
-
+      <input  type="submit" value="Login"/>
     </form>
-
+    <div class="pas_forgot">
+      <a onclick="document.getElementById('sign').style.animation='fadeOutForgot 1s';
+					document.getElementById('sign').style.display='none';
+					document.getElementById('forg').style.animation='fadeInForgot 1s';
+					document.getElementById('forg').style.display='block'" href="#">forgot password</a>
+    </div>
   </div>
+
+
+  <div class="box_forgot" id="forg" style="display: none;">
+    <span onclick="document.getElementById('forg').style.animation='fadeOutForgot 1s'
+					document.getElementById('forg').style.display='none';
+					document.getElementById('sign').style.animation='fadeInForgot 1s'
+					document.getElementById('sign').style.display='block'" class="close" title="Close">&times;</span>
+    <form class="sign_form form_forget" th:method="post">
+      <label>Enter your email</label>
+      <input type="text" placeholder="enter email.." th:name="emailForget">
+      <p class="er_message login_email" th:if="${emailF}" th:text="${emailF}">error</p>
+      <input  type="submit" value="Send password"/>
+    </form>
+  </div>
+
 </div>
+
 
 
 </body>
