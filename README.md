@@ -1,2 +1,2 @@
 # thymeleaf-spring
-Spring boot project with thymeleaf 
+Project represents application that allows administrators to manage groups of students.
